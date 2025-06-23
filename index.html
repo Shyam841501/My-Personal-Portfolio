@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carter | AI/ML Engineer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        .dark {
+            --dark: #f8fafc;
+            --light: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-dark {
+            background-color: var(--dark);
+        }
+
+        .text-light {
+            color: var(--light);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .shape-1 {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 70%);
+            z-index: -1;
+        }
+
+        .shape-2 {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
+            z-index: -1;
+        }
+
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .active::after {
+            width: 100%;
+        }
+
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--primary);
+        }
+
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--primary);
+        }
+
+        input, textarea {
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900 dark:text-white">
+    <!-- Animated Background Shapes -->
+    <div class="shape-1"></div>
+    <div class="shape-2"></div>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold gradient-text">Shyam Mishra</a>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-800 dark:text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#certifications" class="nav-link">Certifications</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="hidden md:flex items-center">
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                        <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                        <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                    <a href="#resume" class="ml-4 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition">Resume</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-2">
+                <a href="#home" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                <a href="#about" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+                <a href="#skills" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                <a href="#projects" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+                <a href="#certifications" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Certifications</a>
+                <a href="#contact" class="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+                <div class="flex items-center justify-between px-4 py-2">
+                    <span>Dark Mode</span>
+                    <div class="relative inline-block w-10 ml-2 align-middle select-none">
+                        <input type="checkbox" id="toggle-mobile" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                        <label for="toggle-mobile" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <a href="#resume" class="block px-4 py-2 bg-primary text-white rounded-md text-center hover:bg-primary-dark transition">Resume</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Shyam Mishra</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+                        <span id="typed"></span>
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        Passionate about building intelligent systems that solve real-world problems. Currently pursuing my degree in AI & Machine Learning Engineering.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition">View My Work</a>
+                        <a href="#contact" class="px-6 py-3 border border-primary text-primary dark:text-white rounded-md hover:bg-primary hover:text-white transition">Contact Me</a>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://github.com/Shyam841501/shyam-mishra" target="_blank" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary transition"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/shyam-mishra-4669562a9" target="_blank" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@codewithshyam01?si=YGaWUNBXe8MURDVY" target="_blank" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary transition"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/shyammishra_143?igsh=ZjBkZGl2cjJxYXNj" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-primary transition"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
+                            <img src="it me.jpg" alt="Shyam mishra" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg">
+                            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                                <i class="fas fa-code text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">About <span class="gradient-text">Me</span></h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center" data-aos="fade-right">
+                    <div class="relative">
+                        <div class="w-64 h-64 rounded-lg overflow-hidden shadow-xl">
+                            <img src="my profile.jpg" alt="Alex working" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -left-5 bg-white dark:bg-gray-700 p-3 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                                <i class="fas fa-brain text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-16" data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-4">AI & ML Engineering Student</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+  Hi! I’m Shyam Kumar Mishra, a passionate 2nd-year Artificial Intelligence & Machine Learning Engineering student at Bihar Engineering University. I am deeply interested in how intelligent systems can solve real-world problems and bring innovative change across industries.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+With a growing foundation in Python, Machine Learning, Data Science, and Web Development, I am constantly exploring new technologies, building projects, and learning through practical experience. I’ve also participated in workshops and bootcamps focused on drones, electronics, and AI applications, helping me gain a broader perspective on the power of technology.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">
+I believe in continuous learning, collaboration, and creating impactful solutions. This portfolio reflects my journey, skills, and the projects that fuel my curiosity and ambition.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-primary mr-2"></i>
+                            <span>Government Engineering College Kishanganj</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span>Kishanganj, Bihar</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-2"></i>
+                            <span>er.shyammishra2468@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-2"></i>
+                            <span>9661199744</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                            <span>2th Year</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch text-primary mr-2"></i>
+                            <span>Open Source</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">My <span class="gradient-text">Skills</span></h2>
+            
+            <div class="mb-16" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-6 text-center">Programming Languages</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-full h-full">
+                        </div>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" class="w-full h-full">
+                        </div>
+                        <span>R</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-full h-full">
+                        </div>
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-full h-full">
+                        </div>
+                        <span>C++</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-full h-full">
+                        </div>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-16" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-6 text-center">AI/ML Frameworks & Libraries</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="w-full h-full">
+                        </div>
+                        <span>TensorFlow</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="w-full h-full">
+                        </div>
+                        <span>PyTorch</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" alt="Keras" class="w-full h-full">
+                        </div>
+                        <span>Keras</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" class="w-full h-full">
+                        </div>
+                        <span>Scikit-learn</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" class="w-full h-full">
+                        </div>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" class="w-full h-full">
+                        </div>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-6 text-center">Other Technologies</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-full h-full">
+                        </div>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-full h-full">
+                        </div>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-full h-full">
+                        </div>
+                        <span>Linux</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-full h-full">
+                        </div>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-full h-full">
+                        </div>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="tech-icon flex flex-col items-center" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" class="w-full h-full">
+                        </div>
+                        <span>Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">My <span class="gradient-text">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 063718.png" alt="AI Healthcare Assistant" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">My Resume</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+This is a simple and responsive resume website created using HTML and CSS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">HTML</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">CSS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">Open Resume</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/MY-RESUME.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://shyam841501.github.io/MY-RESUME/" target="_blank">🔗 Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 055359.png" alt="Sentiment Analysis Tool" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Smart Daily Planner</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A smart daily planner website built using HTML, CSS, and JavaScript to efficiently organize tasks and manage time.
+
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">HTML</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">CSS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">JS</span>
+                        </div>
+
+
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/Intern-Project-1.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://shyam841501.github.io/Intern-Project-1/" target="_blank">🔗 Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 055516.png" alt="Autonomous Drone Navigation" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Engineering Notes Sharing Web</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+A responsive frontend design for an engineering notes sharing website using HTML, CSS (Flexbox/Grid), and vanilla JavaScript.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">Python</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">OpenAI Gym</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">ROS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/Intern-Project-2.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://shyam841501.github.io/Intern-Project-2/" target="_blank" class="project-link">🔗 Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 150017.png" alt="weather forecast app" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">weather forecast app</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+  A responsive weather forecast app that fetches real-time data, displaying temperature, humidity, and wind speed for any city.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">HTML</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">CSS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">JS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/Intern-Project-3.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                             <a href="https://shyam841501.github.io/Intern-Project-3/" target="_blank" class="project-link">🔗 Live Demo</a>
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 055842.png" alt="Computer Lab NIT Patna" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">NIT Patna Computer Lab</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+         A responsive website for the NIT Patna Computer Lab, featuring navigation, a welcome message, and a focus on research and innovation in computer science.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">HTML</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">CSS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">JS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/Intern-NIT-C.LAB.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://shyam841501.github.io/Intern-NIT-C.LAB/" target="_blank" class="project-link">🔗 Live Demo</a>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="Screenshot 2025-06-23 172346.png" alt="Gesture Recognition System" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Interactive timetable generator</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            "Interactive timetable generator that lets students create and manage weekly schedules with localStorage persistence."
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">HTML</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">CSS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">JS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/Shyam841501/Intern-Project-4.git" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://shyam841501.github.io/Intern-Project-4/" target="_blank" class="project-link">🔗 Live Demo</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="https://github.com/Shyam841501?tab=repositories" target="_blank" class="px-6 py-3 border border-primary text-primary dark:text-white rounded-md hover:bg-primary hover:text-white transition">
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">My <span class="gradient-text">Certifications</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certification 1 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 152444.png" alt="Deep Learning Specialization" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Career Essentials in Generative AI</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Microsoft and LinkdIn</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Completed the "Career Essentials in Generative AI" learning path by Microsoft and LinkedIn, gaining skills in AI, Generative AI, and Computer Ethics.
+
+                        </p>
+                       <a href="Screenshot 2025-03-29 152444.png" target="_blank" class="text-sm font-medium text-primary hover:underline flex items-center">
+    <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+</a>
+
+                    </div>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-06-23 070916.png" alt="Fundamentals of Deep Learning" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Building Generative AI Skills for Developers</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">LinkedIn Learning</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Completed the "Building Generative AI Skills for Developers" learning path by LinkedIn Learning, focusing on advanced Generative AI techniques.
+
+                        </p>
+                        <a href="Screenshot 2025-06-23 070916.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 152503.png" alt="AI Engineering Professional" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Geospatial Analysis using Google Earth Engine</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">ISRO-IIRS </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Successfully completed the ISRO-IIRS online course on "Geospatial Analysis using Google Earth Engine" conducted from 19 to 23 February 2024.
+
+                        </p>
+                        <a href="Screenshot 2025-03-29 152503.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Certification 4 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 153004.png" alt="Natural Language Processing" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Exploring Earth’s Moon through Chandrayaan</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">ISRO-IIRS</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Successfully completed the ISRO-IIRS online course on "Exploring Earth’s Moon through Chandrayaan" conducted from 19 to 23 February 2024.
+
+                        </p>
+                        <a href="Screenshot 2025-03-29 153004.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Certification 5 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 152528.png" alt="Machine Learning Crash Course" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Electronics for Unmanned Aerial Systems, Sensors and Communication</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">IIT(ISM) Dhanbad </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Participated in the Bootcamp on "Electronics for Unmanned Aerial Systems, Sensors and Communication" organized by IIT(ISM) Dhanbad at GEC Kishanganj from April 5–9, 2024.
+
+                        </p>
+                        <a href="Screenshot 2025-03-29 152528.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                 <!-- Certification 6 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-06-23 070930.png" alt="Machine Learning Crash Course" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Cyber Hygiene Practices</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Government of India </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Successfully completed the “Cyber Hygiene Practices” course and quiz under the Stay Safe Online Campaign by MeitY, Government of India, as part of India’s G20 presidency initiative.
+
+
+                        </p>
+                        <a href="Screenshot 2025-06-23 070930.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                 <!-- Certification 7 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 152920.png" alt="Machine Learning Crash Course" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Introduction to Computers</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">IIT Bombay </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Successfully completed the “Introduction to Computers” training with 100% score under the Spoken Tutorial Project by IIT Bombay at Government Engineering College Kishanganj.
+
+
+                        </p>
+                        <a href="Screenshot 2025-03-29 152920.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                <!-- Certification 8 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-03-29 170948.png" alt="Machine Learning Crash Course" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Python programming</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">IIT Madras </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+"Certified in Python programming by GUVI, an ISO-certified Google for Education Partner."
+
+
+                        </p>
+                        <a href="Screenshot 2025-03-29 170948.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Certification 9 -->
+                <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 mr-4 flex-shrink-0">
+                                <img src="Screenshot 2025-06-23 070957.png" alt="AI for Beginners" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Ideation challenge under Startup Bihar</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Startup Bihar Policy 2022</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+Received a Certificate of Appreciation for participating in the ideation challenge under Startup Bihar Policy 2022, organized by the Department of Industries, Government of Bihar at GEC Kishanganj.
+
+                        </p>
+                        <a href="Screenshot 2025-06-23 070957.png" class="text-sm font-medium text-primary hover:underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Download My <span class="gradient-text">Resume</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Get a comprehensive overview of my education, skills, projects, and work experience in a single document.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="RESUME (Shyam Mishra)[1].pdf" class="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition flex items-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                    </a>
+                    <a href="RESUME (shyam Mishra)[1].pdf" class="px-6 py-3 border border-primary text-primary dark:text-white rounded-md hover:bg-primary hover:text-white transition flex items-center">
+                        <i class="fas fa-eye mr-2"></i> View Online
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Get In <span class="gradient-text">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8">
+                        Feel free to reach out to me for collaborations, job opportunities, or just to say hello! I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Kishanganj, Bihar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-300">er.shyammishra2468@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Phone</h4>
+                                <p class="text-gray-600 dark:text-gray-300">9661199744</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Shyam841501/shyam-mishra" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shyam-mishra-4669562a9" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://youtube.com/@codewithshyam01?si=YGaWUNBXe8MURDVY" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/shyammishra_143?igsh=ZjBkZGl2cjJxYXNj" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Your Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary transition" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary transition" required></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition w-full md:w-auto">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div id="formSuccess" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-md">
+                        <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully!
+                    </div>
+                    
+                    <div id="formError" class="hidden mt-6 p-4 bg-red-100 text-red-700 rounded-md">
+                        <i class="fas fa-exclamation-circle mr-2"></i> There was an error sending your message. Please try again.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold gradient-text">Shyam Mishra</a>
+                    <p class="mt-2 text-gray-400">AI & ML Engineering Student</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Shyam Mishra. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/Shyam841501/shyam-mishra" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shyam-mishra-4669562a9" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com/@codewithshyam01?si=YGaWUNBXe8MURDVY" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/shyammishra_143?igsh=ZjBkZGl2cjJxYXNj" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="er.shyammishra2468@gmail.com" class="text-gray-400 hover:text-white transition"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Typed.js
+        document.addEventListener('DOMContentLoaded', function() {
+            var typed = new Typed('#typed', {
+                strings: [
+                    'AI Engineer',
+                    'ML Developer',
+                    'Data Scientist',
+                    'Tech Enthusiast'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+        });
+
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const toggleMobile = document.getElementById('toggle-mobile');
+        const html = document.documentElement;
+
+        // Check for saved user preference or use OS preference
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            if (toggle) toggle.checked = true;
+            if (toggleMobile) toggleMobile.checked = true;
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        }
+
+        if (toggle) {
+            toggle.addEventListener('change', toggleDarkMode);
+        }
+        if (toggleMobile) {
+            toggleMobile.addEventListener('change', toggleDarkMode);
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
+            });
+        });
+
+        // Highlight active navigation link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Hide any previous messages
+                formSuccess.classList.add('hidden');
+                formError.classList.add('hidden');
+                
+                // Simulate form submission (in a real app, you would use AJAX/Fetch)
+                setTimeout(function() {
+                    // For demo purposes, we'll randomly show success or error
+                    if (Math.random() > 0.3) {
+                        formSuccess.classList.remove('hidden');
+                        contactForm.reset();
+                    } else {
+                        formError.classList.remove('hidden');
+                    }
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
